@@ -7,7 +7,6 @@ Widget Design(
     {required size,
     required min,
     required second,
-    required milis,
     required colorFirst,
     required colorSecond,
     required boolvalue,
@@ -139,7 +138,7 @@ Widget Design(
         Visibility(
           visible: boolvalue == "stopWatchButton" ? true : false,
           child: Text(
-            "${min.toString().padLeft(2, '0')} : ${second.toString().padLeft(2, '0')}. ${milis.toString().padLeft(2, '0')}",
+            "${min.toString().padLeft(2, '0')} : ${second.toString().padLeft(2, '0')}",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 26,

@@ -3,7 +3,6 @@ import 'package:clock_app/heders.dart';
 Widget button({
   required isStop,
   required timer,
-  onTapFlag,
   required onTapEnd,
   required onTapReset,
   required colorFirst,
@@ -99,17 +98,6 @@ Widget button({
               ),
               const SizedBox(
                 width: 5,
-              ),
-              //flag
-
-              Visibility(
-                visible: onTapFlag != null,
-                child: IconButton(
-                  onPressed: onTapFlag,
-                  icon: const Icon(
-                    Icons.flag,
-                  ),
-                ),
               ),
             ],
           ),

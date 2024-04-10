@@ -23,7 +23,6 @@ class _HomePageState extends State<HomePage> {
 
   int second = 00;
   int m = 0;
-  int milis = 00;
   int min = 00;
   List flag = [];
 
@@ -45,22 +44,19 @@ class _HomePageState extends State<HomePage> {
   void timer() {
     isStop = true;
     Future.delayed(
-      const Duration(milliseconds: 1),
+      const Duration(seconds: 1),
       () {
         setState(
           () {
             if (isStop) {
-              milis++;
+              second++;
             }
 
-            if (milis > 59) {
-              second++;
-              milis = 0;
-            }
             if (second > 59) {
-              min++;
+              second++;
               second = 0;
             }
+
             if (min > 59) {
               min = 0;
             }
@@ -209,15 +205,22 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+
             //clock
             Visibility(
               visible: clockButton == true,
               child: Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(
-                      height: 180,
+                    Design(
+                      size: size,
+                      min: min,
+                      second: second,
+                      colorFirst: Colors.pink,
+                      colorSecond: Colors.purple,
+                      boolvalue: "clockButton",
+                      d: d,
                     ),
                     Text(
                       "${(d.hour % 12).toString().padLeft(2, '0')} : ${d.minute.toString().padLeft(2, '0')} : ${d.second.toString().padLeft(2, '0')}",
@@ -227,8 +230,8 @@ class _HomePageState extends State<HomePage> {
                         foreground: Paint()
                           ..shader = const LinearGradient(
                             colors: <Color>[
-                              Colors.blueAccent,
-                              Colors.deepPurpleAccent,
+                              Colors.pink,
+                              Colors.purple,
                             ],
                           ).createShader(
                             const Rect.fromLTWH(200, 50, 100, 150),
@@ -236,19 +239,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(
-                      height: 30,
-                    ),
-                    Design(
-                      size: size,
-                      min: min,
-                      second: second,
-                      milis: milis,
-                      colorFirst: Colors.pink,
-                      colorSecond: Colors.purple,
-                      boolvalue: "clockButton",
-                      d: d,
-                    ),
-                    Spacer(),
+                      height: 200,
+                    )
                   ],
                 ),
               ),
@@ -261,15 +253,12 @@ class _HomePageState extends State<HomePage> {
                 timer: timer,
                 min: min,
                 second: second,
-                milis: milis,
                 isStop: isStop,
                 onTapEnd: () {
                   isStop = false;
-                  setState(() {});
-                },
-                onTapFlag: () {
+
                   String lap =
-                      "${min.toString().padLeft(2, '0')}:${second.toString().padLeft(2, '0')}.${milis.toString().padLeft(2, '0')}";
+                      "${min.toString().padLeft(2, '0')}:${second.toString().padLeft(2, '0')}";
                   setState(
                     () {
                       flag.add(lap);
@@ -278,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 onTapReset: () {
                   isStop = false;
-                  min = second = milis = 0;
+                  min = second = 0;
                   flag.clear();
                   setState(() {});
                 },
@@ -293,11 +282,13 @@ class _HomePageState extends State<HomePage> {
               child: Expanded(
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Design(
                       size: size,
                       min: min,
                       second: second,
-                      milis: milis,
                       colorFirst: Colors.greenAccent,
                       colorSecond: Colors.blue,
                       boolvalue: "timerButton",
