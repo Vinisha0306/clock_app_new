@@ -34,3 +34,7 @@ To use the Clock App, simply download and install it on your device. Once instal
 <img src="https://github.com/Vinisha0306/clock_app_new/assets/143987696/2be3852e-a4fd-48cd-b963-d9abee84ecf9" width="250" height="550">
 <img src="https://github.com/Vinisha0306/clock_app_new/assets/143987696/ef06178b-a12b-4bef-bdda-de9d064e0da5" width="250" height="550">
 <img src="https://github.com/Vinisha0306/clock_app_new/assets/143987696/59c0cd81-cdbb-4b55-8580-ec3dcbee5eb9" width="250" height="550">
+
+## Video
+https://github.com/Vinisha0306/clock_app_new/assets/143987696/ef80f35a-37ff-44a2-a0a7-a8abd932d48a
+
