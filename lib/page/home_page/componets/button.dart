@@ -1,9 +1,11 @@
 import 'package:clock_app/heders.dart';
+import 'package:flutter/material.dart';
 
 Widget button({
   required isStop,
   required timer,
   required onTapEnd,
+  onTapflag,
   required onTapReset,
   required colorFirst,
   required colorSecond,
@@ -97,7 +99,44 @@ Widget button({
                 ),
               ),
               const SizedBox(
-                width: 5,
+                height: 10,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              colorFirst,
+                              colorSecond,
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: onTapflag,
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.all(15),
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      child: const Text(
+                        'Add Flag',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

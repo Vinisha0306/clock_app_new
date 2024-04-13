@@ -256,7 +256,9 @@ class _HomePageState extends State<HomePage> {
                 isStop: isStop,
                 onTapEnd: () {
                   isStop = false;
-
+                  setState(() {});
+                },
+                onTapFlag: () {
                   String lap =
                       "${min.toString().padLeft(2, '0')}:${second.toString().padLeft(2, '0')}";
                   setState(
