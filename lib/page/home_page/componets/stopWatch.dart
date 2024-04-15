@@ -1,6 +1,4 @@
 import 'package:clock_app/heders.dart';
-import 'package:clock_app/page/home_page/componets/button.dart';
-import 'package:clock_app/page/home_page/componets/design.dart';
 
 Widget stopWatch({
   required size,
@@ -42,25 +40,41 @@ Widget stopWatch({
               timer();
             }
           },
+          flagon: true,
         ),
         //lap
         Column(
           children: List.generate(
             flag.length,
-            (index) => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  'Lap ${index + 1}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+            (index) => Container(
+              margin: const EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 3,
+                    offset: Offset(3, 3),
                   ),
-                ),
-                Text(
-                  flag[index],
-                ),
-              ],
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'Lap ${index + 1}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    flag[index],
+                  ),
+                ],
+              ),
             ),
           ),
         )

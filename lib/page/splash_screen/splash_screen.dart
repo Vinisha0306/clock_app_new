@@ -11,7 +11,7 @@ class _SplashScreensState extends State<SplashScreens> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       () {
         Navigator.pushReplacementNamed(context, AppRoutes.homePage);
       },
@@ -22,14 +22,12 @@ class _SplashScreensState extends State<SplashScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            image: DecorationImage(
-              image: AssetImage('lib/assets/images/AppIcon.png'),
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            image: AssetImage('lib/assets/images/logo.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
       ),

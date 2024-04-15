@@ -1,11 +1,4 @@
 import 'package:clock_app/heders.dart';
-import 'package:clock_app/page/home_page/componets/button.dart';
-import 'package:clock_app/page/home_page/componets/design.dart';
-import 'package:clock_app/page/home_page/componets/stopWatch.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:numberpicker/numberpicker.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -110,108 +103,11 @@ class _HomePageState extends State<HomePage> {
             const EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 30),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                //clock
-                ElevatedButton(
-                  onPressed: () {
-                    stopWatchButton = false;
-                    clockButton = true;
-                    timerButton = false;
-                    setState(() {});
-                  },
-                  style: clockButton == true
-                      ? ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            Colors.purple.shade200,
-                          ),
-                        )
-                      : const ButtonStyle(),
-                  child: const Text(
-                    'Clock',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                //stopwatch
-                ElevatedButton(
-                  onPressed: () {
-                    stopWatchButton = true;
-                    clockButton = false;
-                    timerButton = false;
-                    setState(() {});
-                  },
-                  style: stopWatchButton == true
-                      ? ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            Colors.red.shade200,
-                          ),
-                        )
-                      : const ButtonStyle(),
-                  child: Text(
-                    'StopWatch',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black,
-                      shadows: [
-                        stopWatchButton == true
-                            ? const Shadow(
-                                color: Colors.grey,
-                                blurRadius: 5,
-                                offset: Offset(2, 2),
-                              )
-                            : const Shadow(),
-                      ],
-                    ),
-                  ),
-                ),
-                //timer
-                ElevatedButton(
-                  onPressed: () {
-                    stopWatchButton = false;
-                    clockButton = false;
-                    timerButton = true;
-                    setState(() {});
-                  },
-                  style: timerButton == true
-                      ? ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            Colors.blue.shade200,
-                          ),
-                        )
-                      : const ButtonStyle(),
-                  child: Text(
-                    'Timer',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black,
-                      shadows: [
-                        timerButton == true
-                            ? const Shadow(
-                                color: Colors.grey,
-                                blurRadius: 5,
-                                offset: Offset(2, 2),
-                              )
-                            : const Shadow(),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
             //clock
             Visibility(
               visible: clockButton == true,
               child: Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Design(
                       size: size,
@@ -387,6 +283,29 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+            ),
+            PageButton(
+              stopWatchButton: stopWatchButton,
+              clockButton: clockButton,
+              timerButton: timerButton,
+              onTapClock: () {
+                stopWatchButton = false;
+                clockButton = true;
+                timerButton = false;
+                setState(() {});
+              },
+              onTapStopwatch: () {
+                stopWatchButton = true;
+                clockButton = false;
+                timerButton = false;
+                setState(() {});
+              },
+              onTapTimer: () {
+                stopWatchButton = false;
+                clockButton = false;
+                timerButton = true;
+                setState(() {});
+              },
             ),
           ],
         ),

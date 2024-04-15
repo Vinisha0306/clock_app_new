@@ -1,5 +1,5 @@
 import 'package:clock_app/heders.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 Widget button({
   required isStop,
@@ -10,6 +10,7 @@ Widget button({
   required colorFirst,
   required colorSecond,
   required Start,
+  flagon,
 }) {
   return Expanded(
     child: Row(
@@ -101,41 +102,47 @@ Widget button({
               const SizedBox(
                 height: 10,
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              colorFirst,
-                              colorSecond,
-                            ],
+              Visibility(
+                visible: flagon == true,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                colorFirst,
+                                colorSecond,
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    TextButton(
-                      onPressed: onTapflag,
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.all(15),
-                        textStyle: const TextStyle(
-                          fontSize: 20,
+                      TextButton.icon(
+                        onPressed: onTapflag,
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.all(15),
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        'Add Flag',
-                        style: TextStyle(
+                        icon: const Icon(
+                          Icons.flag,
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                        ),
+                        label: const Text(
+                          'Add Flag',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
