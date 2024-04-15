@@ -195,9 +195,6 @@ class _HomePageState extends State<HomePage> {
                       timerMinute: timerMinute,
                       timerSecond: timerSecond,
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
                     button(
                       isStop: isStart,
                       timer: Starter,
@@ -217,6 +214,9 @@ class _HomePageState extends State<HomePage> {
                           Starter();
                         }
                       },
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     Visibility(
                       visible: isStart != true,
